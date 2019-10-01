@@ -1,0 +1,33 @@
+
+
+
+service:
+  input: SERVICE-A
+
+component:
+  input: COMPONENT-A
+bil:
+  test:
+    a: "A"
+    b: "B"
+    c: "C"
+
+
+---
+spring:
+  profiles: SENDONLY
+
+
+application:
+  properties:
+    locations: "config"
+service:
+  input: SERVICE-A
+
+component:
+  input: COMPONENT-A
+bil:
+  test:
+    a: "A"
+    b: "B"
+    c: "C"
