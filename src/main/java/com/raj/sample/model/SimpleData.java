@@ -1,4 +1,4 @@
-package com.raj.sample.datasender.model;
+package com.raj.sample.model;
 
 import java.util.Map;
 

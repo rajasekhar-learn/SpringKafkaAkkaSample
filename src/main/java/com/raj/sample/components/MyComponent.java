@@ -1,8 +1,8 @@
-package com.raj.sample.datasender.components;
+package com.raj.sample.components;
 
-import com.raj.sample.datasender.configuration.CacheService;
-import com.raj.sample.datasender.model.SimpleData;
-import com.raj.sample.datasender.services.MyService;
+import com.raj.sample.configuration.CacheService;
+import com.raj.sample.model.SimpleData;
+import com.raj.sample.services.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class MyComponent {
     @Autowired
     MyService myService;
 
-    @Value("${component.input}")
+    @Value("$ {component.input}")
     String componentValue;
 
     @Autowired

@@ -1,6 +1,6 @@
-package com.raj.sample.datasender.configuration;
+package com.raj.sample.configuration;
 
-import com.raj.sample.datasender.model.SimpleData;
+import com.raj.sample.model.SimpleData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.io.File;
 @Service
 public class CacheService {
 
-    @Value("${application.properties.locations}")
+    @Value("$ {application.properties.locations}")
     String configLocationName;
 
     @Cacheable(value="simpleData")
