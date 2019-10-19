@@ -1,24 +1,12 @@
 package com.raj.sample;
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.event.Logging;
-import akka.event.LoggingAdapter;
-import com.raj.sample.actors.KakfkaPushTaskSupervisor;
-import com.raj.sample.components.BilProperties;
-import com.raj.sample.components.MyComponent;
-import com.raj.sample.extensions.SpringExtension;
+
+import com.raj.sample.services.EmailService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ApplicationContext;
-import scala.concurrent.Await;
-import scala.concurrent.duration.Duration;
 
-import java.util.Arrays;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.TimeUnit;
-
-import static akka.actor.TypedActor.context;
+import java.util.Locale;
 
 @SpringBootApplication
 @EnableCaching
@@ -28,7 +16,7 @@ public class DataSenderApplication {
 		ApplicationContext context =
 				SpringApplication.run(DataSenderApplication.class, args);
 
-		ActorSystem system = context.getBean(ActorSystem.class);
+		/*ActorSystem system = context.getBean(ActorSystem.class);
 
 		final LoggingAdapter log = Logging.getLogger(system, "Application");
 
@@ -36,15 +24,24 @@ public class DataSenderApplication {
 
 		ActorRef supervisor = system.actorOf(
 				ext.props("kakfkaPushTaskSupervisor"));
-
-		for (int i = 1; i < 1000; i++) {
+		long st=System.currentTimeMillis();
+		for (int i = 1; i <= 100000; i++) {
 			supervisor.tell(String.valueOf(i), null);
 		}
-
-		Thread.sleep(100000000);
+		Thread.sleep(9000);
+		System.out.println("time took :: "+(System.currentTimeMillis()-st));
+		Thread.sleep(1000000);
 		log.info("Shutting down");
-		Await.ready(system.terminate(), Duration.Inf());
+		Await.ready(system.terminate(), Duration.Inf());*/
+		try {
+			EmailService emailService = context.getBean(EmailService.class);
+			emailService.sendSimpleMail("abcdef ghijklman", "recipientmail@gmail.com", Locale.ENGLISH);
+			System.out.println("email sent !!");
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 
+		System.exit(0);
 	}
 
 

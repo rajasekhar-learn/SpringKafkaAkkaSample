@@ -13,10 +13,14 @@ public class TaskActor extends UntypedActor {
     /*@Autowired
     KafkaTemplate kafkaTemplate;*/
 
+    static long count=0;
+
     @Override
     public void onReceive(Object message) throws Throwable {
         //kafkaTemplate.send("",message);
-        System.out.println(String.valueOf(message));
-        throw new Exception("test exception thrown!!");
+        System.out.println("Actor msg:: "+String.valueOf(message));
+        ++count;
+        System.out.println("Actor count :: "+count);
+      //  throw new Exception("test exception thrown!!");
     }
 }

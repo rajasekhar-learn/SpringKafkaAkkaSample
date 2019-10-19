@@ -17,8 +17,15 @@ public class KakfkaPushTaskSupervisor extends UntypedActor {
     @Autowired
     SpringExtension springExtension;
 
+    static long count=0;
+
+
+
     @Override
     public void onReceive(Object message)  {
+        System.out.println("super message recieved :: "+String.valueOf(message));
+        ++count;
+        System.out.println("super count :: "+count);
         ActorRef actorRef=context().actorOf(springExtension.props("taskActor"));
         actorRef.tell(message,getSender());
     }
