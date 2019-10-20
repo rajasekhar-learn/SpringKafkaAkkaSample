@@ -1,5 +1,6 @@
 package com.raj.sample.configuration;
 
+import org.springframework.core.io.ClassPathResource;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -11,8 +12,12 @@ public class YmlConfigurationManager<T> {
 
     private YmlConfigurationManager(){}
 
-    public static Object load(String path,Class T){
-        return YMLCONFIG.loadConfiguartion(path,T);
+    public static Object load(String path,Class T,boolean isClassPath){
+        if(!isClassPath){
+            return YMLCONFIG.loadConfiguartion(path,T);
+        }else {
+           return YMLCONFIG.loadClassPathConfiguartion(path, T);
+        }
     }
 
     public  T loadConfiguartion(String path,Class c){
@@ -32,5 +37,27 @@ public class YmlConfigurationManager<T> {
         }
         return null;
     }
+
+    public  T loadClassPathConfiguartion(String path,Class c){
+        Yaml yaml = new Yaml(new Constructor(c));
+        InputStream inputStream=null;
+        try {
+            inputStream = new ClassPathResource(path).getInputStream();
+            return  yaml.load(inputStream);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            try {
+                inputStream.close();
+            }catch (Exception ex){
+
+            }
+        }
+        return null;
+    }
+
+
+
+
 
 }

@@ -1,12 +1,10 @@
 
-
-
 service:
   input: SERVICE-A
 
 component:
-  input: COMPONENT-A
 bil:
+  input: COMPONENT-A
   test:
     a: "A"
     b: "B"
@@ -17,8 +15,8 @@ spring:
     host: smtp.gmail.com
     port: 587
     protocol: smtp
-    username: myemail**@gmail.com
-    password: secret pwd generated
+    username: veeragandhapu@gmail.com
+    password: secret
     properties:
       mail:
         smtp:
@@ -48,7 +46,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     protocol: smtp
-    username: myemail**@gmail.com
+    username: veeragandhapu@gmail.com
     password: secret
     properties:
       mail:

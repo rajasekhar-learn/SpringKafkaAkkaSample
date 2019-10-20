@@ -1,0 +1,17 @@
+
+service:
+  input: SERVICE-A
+
+component:
+  key: value
+
+bil:
+  input: COMPONENT-G
+  test:
+    a: "D"
+    b: "F"
+    c: "E"
+
+application:
+  properties:
+    locations: "config"

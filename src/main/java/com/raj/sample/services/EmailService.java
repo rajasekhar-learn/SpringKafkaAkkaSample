@@ -39,7 +39,7 @@ public class EmailService {
         final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
         final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
         message.setSubject("Example HTML email (simple)");
-        message.setFrom("noreply@gmail.com");
+        message.setFrom("rveeragandhapu@gmail.com");
         message.setTo(recipientEmail);
 
         // Create the HTML body using Thymeleaf
